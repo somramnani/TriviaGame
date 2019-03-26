@@ -26,18 +26,17 @@ $("#start").on("click", function(){
 		$("#results").append("Number Correct: " + wins + "<br>");
 		$("#results").append("Number incorrect: " + losses + "<br>");
 		$("#results").append("Number not answered: " + unanswered);
-	
-
 	}
-		function timer(){
-			function run(){
-				stop();
-				intervalId = setInterval(decrement, 1000);
-			}
 
-			function decrement(){
-				number--;
-				$("#show-number").html("<h2>" + "Time Left: " + number + "</h2>");
+	function timer(){
+		function run(){
+			stop();
+			intervalId = setInterval(decrement, 1000);
+		}
+
+		function decrement(){
+			number--;
+			$("#show-number").html("<h2>" + "Time Left: " + number + "</h2>");
 				if (number === 0) {
 					stop();
 					clearBoard();
@@ -48,7 +47,7 @@ $("#start").on("click", function(){
 				clearInterval(intervalId);
 			}
 			run();
-	}
+		}
 	timer();
 	//__________________________________________________________
 
@@ -139,6 +138,7 @@ $("#start").on("click", function(){
 			var answer = document.forms[0];
 
 			function answerChecker(question){
+				losses++;
 				for(let i = 0; i < answer.length; i++){
 					
 					for(let j = 0; j < question.length; j++){
@@ -146,30 +146,22 @@ $("#start").on("click", function(){
 						
 						if(answer[i].checked){
 							if(answer[i].value === q.correctAnswer){
-								alert("Correct");
 								wins++;
-							}else{
-								losess++
+								losses--;
 							}
-			
-							}
-						
 						}
 					}
-
+				}
 			}
+
 			function displayAnswers(){
 				for(i = 0; i < array.length; i++){
 					answerChecker(array[i]);
 				}
 			}
 
-
 			displayAnswers();
 			clearBoard();
-
-			
-
 		
 	});
 
