@@ -12,7 +12,7 @@
 
 	var wins = 0;
 	var losses = 0;
-	var unanswered = 0;
+	var unanswered = 3;
 
 //__________________________________________________________
 
@@ -145,9 +145,12 @@ $("#start").on("click", function(){
 						let q = question[j];
 						
 						if(answer[i].checked){
+							
 							if(answer[i].value === q.correctAnswer){
 								wins++;
 								losses--;
+								unanswered --;
+								
 							}
 						}
 					}
