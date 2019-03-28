@@ -17,17 +17,22 @@
 //__________________________________________________________
 
 $("#start").on("click", function(){
+	//Once clicked hides the start button
 	startButton.hide();
 	//__________________________________________________________
 	//TIMER 
 	//__________________________________________________________
+	
+	// create a function that clears the board and shows the final results
 	function clearBoard(){
+		
 		quizContainer.hide();
 		$("#results").append("Number Correct: " + wins + "<br>");
 		$("#results").append("Number incorrect: " + losses + "<br>");
 		$("#results").append("Number not answered: " + unanswered);
 	}
 
+	// A function that creates the timer
 	function timer(){
 		function run(){
 			stop();
@@ -48,6 +53,7 @@ $("#start").on("click", function(){
 			}
 			run();
 		}
+	// Runs the timer
 	timer();
 	//__________________________________________________________
 
@@ -166,73 +172,5 @@ $("#start").on("click", function(){
 			displayAnswers();
 			clearBoard();
 		
-	});
-
-	// console.log("Correct Answers:" + wins);
-	// console.log("Wrong Answers:" + losses)
-
-	// WORKING CODE PART 2
-	//	$('#submit').on("click", function(){
-			// Grabs the information from the forms
-	// 		var answer = document.forms[0];
-			
-	// 		for(let i = 0; i < answer.length; i++){
-	// 			for(let j = 0; j < question1.length; j++){
-	// 				let question = question1[j];
-	// 			}
-
-	// 				if(answer[i].checked){
-	// 					if(answer[i].value === question1[0].correctAnswer){
-	// 						alert("Correct");
-	// 					}
-	// 				}
-	// 			}
-	// });
-
-
-	// WORKING CODE PART 1
-// 	$('#submit').on("click", function(){
-// 		var answer = document.forms[0];
-// 		console.log(answer);
-
-// 		for(let i = 0; i < answer.length; i++){
-
-// 				if(answer[i].checked){
-// 					if(answer[i].value === question1[0].correctAnswer){
-// 						alert("Correct");
-// 					}
-// 				}
-// 			}
-// });
-
-	
-
-
-			
-		
-
-		
-
-
-	
-
-
-
-//__________________________________________________________
-
-
-		// $(".answers").on("click", function(){
-		// 	var dataAttribute = $(this).attr('data-name');
-		// 	if(dataAttribute === myQuestions[0].correctAnswer){
-		// 		document.write("correct Answer");
-		// 		wins++;
-		// 	}
-		// 	else{
-		// 		losses ++;
-		// 		document.write("Incorrect, the correct answer is" + myQuestions[0].correctAnswer);
-		// 	}
-		// 	Questions()
-	
-
-
-		});
+	});		
+});
