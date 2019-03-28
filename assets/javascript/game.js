@@ -19,6 +19,7 @@
 $("#start").on("click", function(){
 	//Once clicked hides the start button
 	startButton.hide();
+
 	//__________________________________________________________
 	//TIMER 
 	//__________________________________________________________
@@ -27,6 +28,8 @@ $("#start").on("click", function(){
 	function clearBoard(){
 		
 		quizContainer.hide();
+
+		// Shows the users results
 		$("#results").append("Number Correct: " + wins + "<br>");
 		$("#results").append("Number incorrect: " + losses + "<br>");
 		$("#results").append("Number not answered: " + unanswered);
@@ -53,6 +56,7 @@ $("#start").on("click", function(){
 			}
 			run();
 		}
+
 	// Runs the timer
 	timer();
 	//__________________________________________________________
@@ -95,27 +99,48 @@ $("#start").on("click", function(){
 
 
 		//An array to store all the question objects
-		var array = [question1,question2, question3];
+		var array = [question1, question2, question3];
 		
-
+			// Adds the questions and answers to the HTML page
 		function Questions(questions){
+			
+			// Goes throught the questions Object
 			for(let i = 0; i <  questions.length; i++){
-				// Adds the questions to the HTML page
 				let question = questions[i];
+				
+				// Saves the answer values in a variable
 				let answer = question.answers;
+				
+				//Puts the questions in a paragraph
 				var questionContainer = $('<p>').text(question.question);
+				
+				//Adds a class to the paragraph questionContainer 
 				questionContainer.addClass("");
+				
+				//Puts the questionContainer <p> after the quiz div
 				$("#quiz").append(questionContainer);
 				
 				// Adds the answers to the HTML page and makes them a radio input
 				if(Array.isArray(answer)){
 					for(let j = 0; j < answer.length; j++){
 						let a = answer[j];
-						var input = $('<input>' +a+ '</input>');
+
+						// Creates an input tag
+						var input = $('<input>' + a + '</input>');
+					
+						// Makes the input tag a radio 
 						input.attr("type", "radio");
-						input.addClass("answers")
+					
+						// Adds a class called answers
+						input.addClass("answers");
+					
+						// Makes the each value of the input tag an answer from the Question object 
 						input.attr("value" , a);
+
+						// Makes the name based on the question class from the Question Object
 						input.attr("name", question.class);
+
+						// puts the answers input after the quiz div
 						$('#quiz').append(input);
 					}		
 				}
