@@ -12,7 +12,7 @@
 
 	var wins = 0;
 	var losses = 0;
-	var unanswered = 3;
+	var unanswered ;
 
 //__________________________________________________________
 
@@ -96,12 +96,10 @@ $("#start").on("click", function(){
 		];
 		//__________________________________________________________
 
-
-
 		//An array to store all the question objects
 		var array = [question1, question2, question3];
 		
-			// Adds the questions and answers to the HTML page
+		// Adds the questions and answers to the HTML page
 		function Questions(questions){
 			
 			// Goes throught the questions Object
@@ -147,12 +145,13 @@ $("#start").on("click", function(){
 			}
 		}
 
-		// A function to loop through the questions array and grab an object and run it through the Questions function
+		// A function to loop through the questions array and grab an object and runs it through the Questions function
 		function displayQuestions(){
 			for(i = 0; i < array.length; i++){
 				Questions(array[i]);
 			}
 		}
+
 		displayQuestions();
 
 		// Submit Button
@@ -173,28 +172,36 @@ $("#start").on("click", function(){
 				
 				// Would assume at this point that all the answers are wrong, so decrement the losses
 				losses++;
+				unanswered++;
 				
 				// A nested loop to compare each input and answers
 				for(let i = 0; i < answer.length; i++){	
 					for(let j = 0; j < question.length; j++){
 						let q = question[j];
+						
 						// If an individual answer is checked
 						if(answer[i].checked){
-							// and if the user answer is the correct answer
+							
+							unanswered--;// This does not work 
+							
+							// And if the user answer is the correct answer
 							if(answer[i].value === q.correctAnswer){
 								wins++;
 								losses--;
-								unanswered --;
+								
 								
 							}
 						}
 					}
 				}
 			}
-			// a function that displays the answers
+			
+			// A function that displays the answers
 			function displayAnswers(){
+
 				// Goes through the array of questions and
 				for(i = 0; i < array.length; i++){
+					
 					// puts each of questions object in the answerChecker function
 					answerChecker(array[i]);
 				}
