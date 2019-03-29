@@ -168,15 +168,19 @@ $("#start").on("click", function(){
 			// Grabs the information from the forms
 			var answer = document.forms[0];
 
+			// A function that grades the quiz
 			function answerChecker(question){
+				
+				// Would assume at this point that all the answers are wrong, so decrement the losses
 				losses++;
-				for(let i = 0; i < answer.length; i++){
-					
+				
+				// A nested loop to compare each input and answers
+				for(let i = 0; i < answer.length; i++){	
 					for(let j = 0; j < question.length; j++){
 						let q = question[j];
-						
+						// If an individual answer is checked
 						if(answer[i].checked){
-							
+							// and if the user answer is the correct answer
 							if(answer[i].value === q.correctAnswer){
 								wins++;
 								losses--;
@@ -187,14 +191,18 @@ $("#start").on("click", function(){
 					}
 				}
 			}
-
+			// a function that displays the answers
 			function displayAnswers(){
+				// Goes through the array of questions and
 				for(i = 0; i < array.length; i++){
+					// puts each of questions object in the answerChecker function
 					answerChecker(array[i]);
 				}
 			}
 
 			displayAnswers();
+			
+			//Invokes the function that clears the board
 			clearBoard();
 		
 	});		
