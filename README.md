@@ -1,5 +1,5 @@
 # Trivia Game
-A Trivia Game with multiple choice and true/false options and the player has to finish the quiz within the allocated time.
+A Trivia Game that is a multiple choice quiz and the player has to finish the quiz within the allocated time.
 
 ## Tools/Languages Used:
 - HTML/CSS
