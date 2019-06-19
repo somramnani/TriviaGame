@@ -1,4 +1,4 @@
-#    ![](assets\images\batman-logo.PNG) 
+#    ![](/assets/images/batman-logo.PNG) 
 A Trivia Game that is a multiple choice quiz and the player has to finish the quiz within the allocated time.
 
 ## Tools/Languages Used:
